@@ -273,53 +273,52 @@ def newItem():
 			return redirect(url_for('showItems', sport_name=sport.name))
 		else:
 			return render_template('newsportitem.html', sports=sports, login=True)
-"""
+
 # Edit a menu item
 
 
-@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit', methods=['GET', 'POST'])
-def editMenuItem(restaurant_id, menu_id):
+@app.route('/catalog/<string:sport_name>/<string:sport_item_name>/edit', methods=['GET', 'POST'])
+def editItem(sport_name, sport_item_name):
     if 'username' not in login_session:
         return redirect('/login')
-    editedItem = session.query(MenuItem).filter_by(id=menu_id).one()
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    temp = session.query(Sport).filter_by(name=sport_name).one()
+    sport_id = temp.id
+    Sport_Item = session.query(SportItem).filter_by(name=sport_item_name, sport_id=sport_id).one()
+    sport = session.query(Sport).filter_by(id=sport_id).one()
     if login_session['user_id'] != restaurant.user_id:
-        return "<script>function myFunction() {alert('You are not authorized to edit menu items to this restaurant. Please create your own restaurant in order to edit items.');}</script><body onload='myFunction()'>"
+        return "<script>function myFunction() {alert('You are not authorized to edit items.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         if request.form['name']:
-            editedItem.name = request.form['name']
+            Sport_Item.name = request.form['name']
         if request.form['description']:
-            editedItem.description = request.form['description']
-        if request.form['price']:
-            editedItem.price = request.form['price']
-        if request.form['course']:
-            editedItem.course = request.form['course']
-        session.add(editedItem)
+            Sport_Item.description = request.form['description']
+        session.add(Sport_Item)
         session.commit()
-        flash('Menu Item Successfully Edited')
-        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+        flash('Item Successfully Edited')
+        return redirect(url_for('showItem', sport_name=sport_name, sport_item_name=sport_item_name))
     else:
-        return render_template('editmenuitem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=editedItem)
+        return render_template('edititem.html', sport=sport, item=Sport_Item)
 
 
 # Delete a menu item
-@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete', methods=['GET', 'POST'])
-def deleteMenuItem(restaurant_id, menu_id):
+@app.route('/catalog/<string:sport_name>/<string:sport_item_name>/delete', methods=['GET', 'POST'])
+def deleteItem(sport_name, sport_item_name):
     if 'username' not in login_session:
         return redirect('/login')
-    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
-    itemToDelete = session.query(MenuItem).filter_by(id=menu_id).one()
+    temp = session.query(Sport).filter_by(name=sport_name).one()
+    sport_id = temp.id
+    Sport_Item = session.query(SportItem).filter_by(name=sport_item_name, sport_id=sport_id).one()
+    sport = session.query(Sport).filter_by(id=sport_id).one()
     if login_session['user_id'] != restaurant.user_id:
-        return "<script>function myFunction() {alert('You are not authorized to delete menu items to this restaurant. Please create your own restaurant in order to delete items.');}</script><body onload='myFunction()'>"
+        return "<script>function myFunction() {alert('You are not authorized to delete items to this restaurant.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
-        session.delete(itemToDelete)
+        session.delete(Sport_Item)
         session.commit()
-        flash('Menu Item Successfully Deleted')
-        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
+        flash('Item Successfully Deleted')
+        return redirect(url_for('showItem', sport_name=sport_name, sport_item_name=sport_item_name))
     else:
-        return render_template('deleteMenuItem.html', item=itemToDelete)
+        return render_template('deleteItem.html', item=Sport_Item)
 
-"""
 # Disconnect based on provider
 @app.route('/disconnect')
 def disconnect():
