@@ -34,6 +34,16 @@
 		<div class="col-md-10">
 
 			{{ sport_item.description }}
+			<a href="{{url_for('editItem')}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit Item
+				</button>
+			</a>
+			<a href="{{url_for('deleteItem')}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Item
+				</button>
+			</a>
 		</div>
 		<div class="col-md-1"></div>
 	</div>
