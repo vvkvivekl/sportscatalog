@@ -56,7 +56,7 @@
 			<h3>{{sport.name}}</h3>
 			{% for sport_item_a in sport_item %}
 
-				<a href = "">
+				<a href = "{{url_for('showItem', sport_name = sport.name, sport_item_name=sport_item_a.name)}}">
 					<div class="row">
 						<div class="col-md-1"></div>
 							<div class="col-md-10">
