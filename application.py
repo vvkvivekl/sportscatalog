@@ -170,8 +170,9 @@ def gdisconnect():
     result = h.request(url, 'GET')[0]
     if result['status'] == '200':
         response = make_response(json.dumps('Successfully disconnected.'), 200)
-		response.headers['Content-Type'] = 'application/json'
-		return response
+        response.headers['Content-Type'] = 'application/json'
+        return response
+        
     else:
 		response = make_response(json.dumps('Failed to revoke token for given user.', 400))
 		response.headers['Content-Type'] = 'application/json'
