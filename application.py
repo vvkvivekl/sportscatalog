@@ -335,7 +335,7 @@ def disconnect():
         return redirect(url_for('showSport'))
 
 if __name__ == '__main__':
-    application.run()
+    app.run()
 
     """
     port = int(os.environ.get('PORT', 8000))
