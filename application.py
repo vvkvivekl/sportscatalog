@@ -334,8 +334,8 @@ def disconnect():
         flash("You were not logged in")
         return redirect(url_for('showSport'))
 
+app.secret_key = 'super_secret_key'
 if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
     app.config['SESSION_TYPE'] = 'filesystem'
     login_session.init_app(app)
     app.debug = True
