@@ -326,8 +326,7 @@ def disconnect():
     if 'provider' in login_session:
         if login_session['provider'] == 'google':
             gdisconnect()
-            del login_session['gplus_id']
-            del login_session['access_token']
+            login_session.clear()
 
         return redirect(url_for('showSport'))
     else:
