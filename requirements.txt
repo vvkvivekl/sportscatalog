@@ -26,3 +26,4 @@ SQLAlchemy==1.2.7
 urllib3==1.22
 webencodings==0.5.1
 Werkzeug==0.14.1
+gunicorn==19.3.0
