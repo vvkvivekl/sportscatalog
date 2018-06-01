@@ -1,0 +1,77 @@
+{% extends "main.html" %}
+{% block content %}
+	<div class="row top-menu">
+		<div class="col-md-10"></div>
+		<div class="col-md-2 text-right">
+			<a href="{{url_for('showLogin')}}">Log in </a>
+		</div>
+	</div>
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<h1>Sports</h1>
+		</div>
+	</div>
+
+	<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+
+
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 padding-none">
+
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-4">
+			<h2>Categories</h2>
+			{% for sport_a in sport %}
+				<a href = "{{url_for('showItems', sport_name = sport_a.name)}}">
+					<div class="row">
+						<div class="col-md-1"></div>
+							<div class="col-md-10">
+								<h3>{{sport_a.name}}</h3>
+							</div>
+						<div class="col-md-1"></div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+		<div class="col-md-6 padding-none">
+			<h2>Letast added</h2>
+
+			{% for sport_item_a in sport_item %}
+				{% set i = 0 %}
+				<a href = "{{url_for('showSport', sport_item = sport_item_a.name)}}">
+					<div class="row">
+						<div class="col-md-1"></div>
+							<div class="col-md-10">
+								<h4>{{sport_item_a.name}} {{sport_item.index}}({{list_sport[i]['name']}})</h4>
+							</div>
+						<div class="col-md-1"></div>
+					</div>
+				</a>
+				{% set i = i + 1 %}
+			{% endfor %}
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+{% endblock %}
