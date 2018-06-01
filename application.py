@@ -173,10 +173,9 @@ def gdisconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
     else:
-		response = make_response(json.dumps('Failed to revoke token for given user.', 400))
-		response.headers['Content-Type'] = 'application/json'
+        response = make_response(json.dumps('Failed to revoke token for given user.', 400))
+        response.headers['Content-Type'] = 'application/json'
 		return response
-
 
 # JSON APIs to view Restaurant Information
 @app.route('/catalog/<string:sport_name>/items/JSON')
