@@ -187,7 +187,7 @@ def sportItemsJSON(sport_name):
 	return jsonify(SportItem=[i.serialize for i in sport_item])
 
 
-@app.route('/catalog/<string:sport_name>/item/<string:sport_item_name>/JSON')
+@app.route('/catalog/<string:sport_name>/<string:sport_item_name>/JSON')
 def sportItemJSON(sport_name, sport_item_name):
     Sport_Item = session.query(SportItem).filter_by(name=sport_item_name).one()
     return jsonify(Sport_Item=Sport_Item.serialize)

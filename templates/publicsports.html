@@ -55,7 +55,7 @@
 
 			{% for sport_item_a in sport_item %}
 				{% set i = 0 %}
-				<a href = "{{url_for('showSport', sport_item = sport_item_a.name)}}">
+				<a href = "{{url_for('showItem', sport_name = list_sport[loop.index-1]['name'], sport_item_name=sport_item_a.name)}}">
 					<div class="row">
 						<div class="col-md-1"></div>
 							<div class="col-md-10">
