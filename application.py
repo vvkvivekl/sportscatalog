@@ -272,7 +272,7 @@ def newItem():
 			flash('New %s Item Successfully Created' % (newItem.name))
 			return redirect(url_for('showItems', sport_name=sport.name))
 		else:
-			return render_template('newsportitem.html', sports=sports, login=True)
+			return render_template('newsportitem.html', sports=sports, login=True, login_session=login_session)
 
 # Edit a menu item
 
