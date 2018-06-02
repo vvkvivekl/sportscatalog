@@ -14,6 +14,15 @@ This repo contains the source code of a Item Catalog project.
  1. Fork Repository.
  2. Deploy in Heroku.
 
+* #### Usage
+> * Public
+>  1. View Sports Items (Kits)
+> * Login Users
+>  1. View Sports Items (Kits)
+>  2. Add new items
+>  3. Edit items
+>  4. Delete items
+
 ## Output Demo.
 
  * [Click here](https://sportscatalog.herokuapp.com) to see output demo.
