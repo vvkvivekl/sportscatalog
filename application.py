@@ -285,8 +285,6 @@ def editItem(sport_name, sport_item_name):
     sport_id = temp.id
     Sport_Item = session.query(SportItem).filter_by(name=sport_item_name, sport_id=sport_id).one()
     sport = session.query(Sport).filter_by(id=sport_id).one()
-    if !login_session['user_id']:
-        return "<script>function myFunction() {alert('You are not authorized to edit items.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         if request.form['name']:
             Sport_Item.name = request.form['name']
@@ -309,8 +307,6 @@ def deleteItem(sport_name, sport_item_name):
     sport_id = temp.id
     Sport_Item = session.query(SportItem).filter_by(name=sport_item_name, sport_id=sport_id).one()
     sport = session.query(Sport).filter_by(id=sport_id).one()
-    if !login_session['user_id']:
-        return "<script>function myFunction() {alert('You are not authorized to delete items to this restaurant.');}</script><body onload='myFunction()'>"
     if request.method == 'POST':
         session.delete(Sport_Item)
         session.commit()
