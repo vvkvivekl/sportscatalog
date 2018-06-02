@@ -34,6 +34,7 @@
 		<div class="col-md-10">
 
 			{{ sport_item.description }}
+			<br>
 			<a href="{{url_for('editItem', sport_name = sport.name, sport_item_name=sport_item.name)}}">
 				<button class="btn btn-default">
 					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit Item
