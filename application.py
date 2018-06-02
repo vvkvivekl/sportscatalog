@@ -311,7 +311,7 @@ def deleteItem(sport_name, sport_item_name):
         session.delete(Sport_Item)
         session.commit()
         flash('Item Successfully Deleted')
-        return redirect(url_for('showItem', sport_name=sport_name, sport_item_name=sport_item_name))
+        return redirect(url_for('showSport'))
     else:
         return render_template('deleteitem.html', sport=sport, item=Sport_Item)
 
