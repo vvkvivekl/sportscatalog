@@ -59,7 +59,7 @@
 			{% endfor %}
 		</div>
 		<div class="col-md-6 padding-none">
-			<h3>Letast added</h3>
+			<h3>Latest added</h3>
 			{% for sport_item_a in sport_item %}
 				<a href = "{{url_for('showItem', sport_name = list_sport[loop.index-1]['name'], sport_item_name=sport_item_a.name)}}">
 					<div class="row">
