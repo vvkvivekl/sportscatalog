@@ -294,7 +294,7 @@ def editItem(sport_name, sport_item_name):
         flash('Item Successfully Edited')
         return redirect(url_for('showItem', sport_name=sport_name, sport_item_name=sport_item_name))
     else:
-        return render_template('edititem.html', sport=sport, item=Sport_Item, login_session=login_session)
+        return render_template('edititem.html', sport=sport, item=Sport_Item, login=True, login_session=login_session)
 
 
 # Delete a menu item
@@ -312,7 +312,7 @@ def deleteItem(sport_name, sport_item_name):
         flash('Item Successfully Deleted')
         return redirect(url_for('showSport'))
     else:
-        return render_template('deleteitem.html', sport=sport, item=Sport_Item, login_session=login_session)
+        return render_template('deleteitem.html', sport=sport, item=Sport_Item, login=True, login_session=login_session)
 
 # Disconnect based on provider
 @app.route('/disconnect')
