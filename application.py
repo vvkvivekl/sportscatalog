@@ -214,7 +214,7 @@ def showSport():
 		return render_template('publicsports.html', sport=sport, sport_item=sport_item, list_sport=list_sport)
 	else:
 		#return str(login_session['user_id'])
-		return render_template('sports.html', sport=sport, sport_item=sport_item, list_sport=list_sport, login=True)
+		return render_template('sports.html', sport=sport, sport_item=sport_item, list_sport=list_sport, login=True, login_session=login_session)
 
 def getSportById(sport_id):
     sport = session.query(Sport).filter_by(id=sport_id).one()
@@ -241,7 +241,7 @@ def showItems(sport_name):
 	if 'username' not in login_session:
 		return render_template('publicitems.html', sport_item=sport_item, sport=sport, sports=sports)
 	else:
-		return render_template('items.html', sport_item=sport_item, sport=sport, sports=sports, login=True)
+		return render_template('items.html', sport_item=sport_item, sport=sport, sports=sports, login=True, login_session=login_session)
 
 # Show a sport item
 @app.route('/catalog/<string:sport_name>/<string:sport_item_name>')
@@ -253,7 +253,7 @@ def showItem(sport_name, sport_item_name):
 	if 'username' not in login_session:
 		return render_template('publicitem.html', sport_item=Sport_Item, sport=sport)
 	else:
-		return render_template('publicitem.html', sport_item=Sport_Item, sport=sport, login=True)
+		return render_template('item.html', sport_item=Sport_Item, sport=sport, login=True, login_session=login_session)
 
 
 # Create a new item
@@ -295,7 +295,7 @@ def editItem(sport_name, sport_item_name):
         flash('Item Successfully Edited')
         return redirect(url_for('showItem', sport_name=sport_name, sport_item_name=sport_item_name))
     else:
-        return render_template('edititem.html', sport=sport, item=Sport_Item)
+        return render_template('edititem.html', sport=sport, item=Sport_Item, login_session=login_session)
 
 
 # Delete a menu item
@@ -313,7 +313,7 @@ def deleteItem(sport_name, sport_item_name):
         flash('Item Successfully Deleted')
         return redirect(url_for('showSport'))
     else:
-        return render_template('deleteitem.html', sport=sport, item=Sport_Item)
+        return render_template('deleteitem.html', sport=sport, item=Sport_Item, login_session=login_session)
 
 # Disconnect based on provider
 @app.route('/disconnect')

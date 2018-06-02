@@ -9,7 +9,11 @@
 		<div class="col-md-11 col-md-offset-1 padding-none">
 			<h2>{{sport_item.name}}</h2>
 			<h5>{{sport.name}}</h5>
-			
+			<a href="{{url_for('newItem')}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Item
+				</button>
+			</a>
 		</div>
 	</div>
 	<div class="row">
@@ -30,7 +34,18 @@
 		<div class="col-md-10">
 
 			{{ sport_item.description }}
-
+			<br>
+			<br>
+			<a href="{{url_for('editItem', sport_name = sport.name, sport_item_name=sport_item.name)}}">
+				<button class="btn btn-default">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit Item
+				</button>
+			</a>
+			<a href="{{url_for('deleteItem', sport_name = sport.name, sport_item_name=sport_item.name)}}">
+				<button class="btn btn-default">
+					<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>Delete Item
+				</button>
+			</a>
 		</div>
 		<div class="col-md-1"></div>
 	</div>
