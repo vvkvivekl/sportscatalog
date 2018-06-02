@@ -10,6 +10,9 @@ This repo contains the source code of a Item Catalog project.
 
 ## Instructions
 
+* ### Set-up Instructions
+ 1. Fork Repository.
+ 2. Deploy in Heroku.
 
 ## Output Demo.
 
