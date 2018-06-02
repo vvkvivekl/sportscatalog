@@ -313,7 +313,7 @@ def deleteItem(sport_name, sport_item_name):
         flash('Item Successfully Deleted')
         return redirect(url_for('showItem', sport_name=sport_name, sport_item_name=sport_item_name))
     else:
-        return render_template('deleteItem.html', item=Sport_Item)
+        return render_template('deleteitem.html', sport=sport, item=Sport_Item)
 
 # Disconnect based on provider
 @app.route('/disconnect')
